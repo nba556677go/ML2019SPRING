@@ -11,6 +11,7 @@ from trainer_hw4 import trainer
 from model import CNN
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
+plt.switch_backend('Agg')
 from cutdata import loadval
 import os
 ####################

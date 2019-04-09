@@ -6,6 +6,7 @@ from keras import optimizers
 from keras.utils import to_categorical
 from keras.preprocessing.image import ImageDataGenerator
 import matplotlib.pyplot as plt
+plt.switch_backend('Agg')
 from keras import backend as K
 import tensorflow as tf
 from cutdata import loadval
