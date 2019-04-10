@@ -59,8 +59,8 @@ def main():
     #label[y_predict[i]] = True
 """
   #p2
-  vis_img_in_filter( img=np.zeros((1, 48, 48, 1)).astype(np.float64), layer_dict=layer_dict , outname='fig2_1.png')
-  vis_img_in_filter( img=x_train[0].reshape((1, 48, 48, 1)).astype(np.float64), layer_dict=layer_dict , outname='fig2_2.png')
+  vis_img_in_filter( img=np.zeros((1, 48, 48, 1)).astype(np.float64), layer_dict=layer_dict , outname='fig2_1.jpg')
+  vis_img_in_filter( img=x_train[0].reshape((1, 48, 48, 1)).astype(np.float64), layer_dict=layer_dict , outname='fig2_2.jpg')
   #p3
   print("using lime...")
   seed(66)
@@ -84,8 +84,8 @@ def main():
     ax.grid('off')
     ax.axis('off')
     #plt.show()
-    fig.savefig(os.path.join(outdir, 'fig3_'+str(i)+'.png'))
-    #plt.imsave(os.path.join(outdir, 'fig3_'+str(i)+'.png') , temp)
+    fig.savefig(os.path.join(outdir, 'fig3_'+str(i)+'.jpg'))
+    #plt.imsave(os.path.join(outdir, 'fig3_'+str(i)+'.jpg') , temp)
     
 #print(model.summary())
 
@@ -108,7 +108,7 @@ def plot_img(img, cm , i):
   ax.imshow(img, cmap=cm)
   ax.grid('off')
   ax.axis('off')
-  fig.savefig(os.path.join(outdir, 'fig1_'+str(i)+'.png'))
+  fig.savefig(os.path.join(outdir, 'fig1_'+str(i)+'.jpg'))
   #plt.show()
 
 def add_mask(img, mask):

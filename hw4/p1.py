@@ -106,7 +106,7 @@ def show_saliency_maps(x, y, model):
         plt.tight_layout()
         fig = plt.gcf()
         plt.draw()      
-        fig.savefig(os.path.join(outdir , 'fig1_'+ str(i)), dpi=100)
+        fig.savefig(os.path.join(outdir , 'fig1_'+ str(i)+'.jpg'), dpi=100)
 
         plt.figure()
         plt.imshow(saliency[i], cmap=plt.cm.jet)
@@ -114,7 +114,7 @@ def show_saliency_maps(x, y, model):
         plt.tight_layout()
         fig = plt.gcf()
         plt.draw()
-        fig.savefig(os.path.join(outdir , 'saliency_'+ str(i)), dpi=100)
+        fig.savefig(os.path.join(outdir , 'saliency_'+ str(i)+'.jpg'), dpi=100)
 
         if i == 3:
             thres = 0.000000025
@@ -132,7 +132,7 @@ def show_saliency_maps(x, y, model):
         plt.tight_layout()
         fig = plt.gcf()
         plt.draw()
-        fig.savefig(os.path.join(outdir , 'see_'+ str(i)), dpi=100)
+        fig.savefig(os.path.join(outdir , 'see_'+ str(i)+'.jpg'), dpi=100)
 
 
 
