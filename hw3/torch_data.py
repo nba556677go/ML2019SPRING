@@ -100,7 +100,7 @@ def loaddata(is_train  ,save = False , train_file = None, test_file = None ):
         #test_x = modeltmp.add_bias(test_x)  
         #predict = modeltmp.sigmoid(np.dot(test_x , w))
         print("test_x:" , test_x.shape)
-        test_x = np.reshape(test_x , (7178,   48 , 48 ,1 ))
+        test_x = np.reshape(test_x , (test_x.shape[0],   48 , 48 ,1 ))
         print("test_x: reshape" , test_x.shape) 
         if save == True:
             np.save("test_x.npy" , test_x)
