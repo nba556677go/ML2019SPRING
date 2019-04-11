@@ -76,7 +76,7 @@ def main():
     print("plotting class "+ str(i))
     explanation = explainer.explain_instance(x_train[class_index[i]].reshape((48,48)), classifier_fn=my_predict, top_labels=5, hide_color=0, num_samples=1000, segmentation_fn=my_slic, random_seed=66)
 
-    temp, mask = explanation.get_image_and_mask(y_predict[class_index[i]], positive_only=True, num_features=5, hide_rest=False)
+    temp, mask = explanation.get_image_and_mask(y_predict[class_index[i]], positive_only=False, num_features=5, hide_rest=False)
     fig = plt.figure()
     ax = plt.axes()
     ax.imshow(mark_boundaries(temp, mask))
