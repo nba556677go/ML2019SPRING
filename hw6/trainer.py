@@ -123,11 +123,12 @@ def testing(args, test_loader, device):
     predict_list = []
     print(model_list)
     for  i in model_list:
-        print(f"ensembling model {i}...")
-        i = os.path.join(args.model_dir , i)
-        model = torch.load(i)
-        model.to(device)
-        predict_list.append(ensemble(model = model, test_loader = test_loader , device = device))
+        if ".pt" in i:
+            print(f"ensembling model {i}...")
+            i = os.path.join(args.model_dir , i)
+            model = torch.load(i)
+            model.to(device)
+            predict_list.append(ensemble(model = model, test_loader = test_loader , device = device))
         #print(predict_list[-1].shape)
     #print(predict_list)
     # predict_list = np.array(predict_list).squeeze()
