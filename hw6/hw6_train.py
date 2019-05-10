@@ -20,11 +20,14 @@ from trainer import training , evaluation
 from preprocess import Preprocess
 from model import *
 def main(args):
+    base_dir = './'
+    outdir = os.path.join(base_dir, args.model_dir)
+    if not os.path.exists(outdir):
+        os.mkdir(outdir)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    os.environ["CUDA_VISIBLE_DEVICES"]= args.gpudevice
-    preprocess = Preprocess(args.train_x, args.train_y, args, loadtoken=True)
+    preprocess = Preprocess(args.train_x, args.train_y, args, loadtoken=False)
     # Get word embedding vectors
-    embedding = preprocess.get_embedding(load=True)
+    embedding = preprocess.get_embedding(load=False)
     # Get word indices
     data, label , seq_true_len= preprocess.get_indices_data()
     #print(seq_true_len[0])
@@ -48,10 +51,10 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('model_dir', type=str, help='[Output] Your model checkpoint directory')
-    parser.add_argument('jieba_lib',type=str, help='[Input] Your jieba dict.txt.big')
     parser.add_argument('train_x',type=str, help='[Input] Your train_x.csv')
     parser.add_argument('train_y',type=str, help='[Input] Your train_y.csv')
+    parser.add_argument('testx', type=str, help='[Input] Your test_x.csv')
+    parser.add_argument('jieba_lib',type=str, help='[Input] Your jieba dict.txt.big')
 
     parser.add_argument('--fraction', default=0.8, type=float)
     parser.add_argument('--lr', default=0.001, type=float)
@@ -63,9 +66,10 @@ if __name__ == "__main__":
     parser.add_argument('--hidden_dim', default=256, type=int)
     parser.add_argument('--wndw', default=3, type=int)
     parser.add_argument('--cnt', default=3, type=int)
-    parser.add_argument('--gpudevice', default="1", type=str)
+    
     parser.add_argument('--earlystop', default=10, type=int)
-    parser.add_argument('--testx', default="data/test_x.csv", type=str)
+    
+    parser.add_argument('--model_dir', default="train_models", type=str)
     parser.add_argument('--ensemble', default=1, type=int)
     parser.add_argument('--ensemble_start', default=0, type=int)
     args = parser.parse_args()
