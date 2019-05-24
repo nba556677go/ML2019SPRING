@@ -41,6 +41,8 @@ def load_images_PIL(data_dir,isgray=False):
     image_list = os.listdir(data_dir)
     image_list.sort()
     #print(image_list)
+    #input()
+    #print(image_list)
     for i in image_list:
         if 'jpg' in i:
             if is_gray:
@@ -154,10 +156,10 @@ def main(args):
     encoded_imgs = encoder.predict(X)
     encoded_imgs = encoded_imgs.reshape(encoded_imgs.shape[0], -1)
 
-    if args.tsne != 0:
-        cluster_imgs = TSNE(n_components=2, n_iter = 3000, verbose=1).fit_transform(encoded_imgs)
-    elif args.pca != 0 :
-        pca=PCA(n_components=args.pca,whiten=True)
+    #if args.tsne != 0:
+     #   cluster_imgs = TSNE(n_components=2, n_iter = 3000, verbose=1).fit_transform(encoded_imgs)
+    if args.pca != 0 :
+        pca=PCA(n_components=args.pca,whiten=True,random_state=0)
         cluster_imgs=pca.fit_transform(encoded_imgs)
         
        
