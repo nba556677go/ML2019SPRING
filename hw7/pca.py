@@ -23,7 +23,7 @@ if '.DS_Store' in filelist:
 #print(filelist)
 #input()
 
-img_shape = imread(IMAGE_PATH+'1.jpg').shape
+img_shape = imread(os.path.join(IMAGE_PATH,'1.jpg')).shape
 img_npy_name = 'img_data.npy'
 
 if os.path.isfile(img_npy_name):
